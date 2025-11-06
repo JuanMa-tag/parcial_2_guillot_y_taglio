@@ -28,5 +28,4 @@ def validar_entero_positivo(prompt_mensaje):
                 print("Error: El número debe ser positivo y mayor a cero.")
                 
         except ValueError:
-            # ESTE ES EL USO DE TRY-EXCEPT PARA VALIDACIÓN
             print(f"Error: '{dato_str}' no es un número válido. Intente de nuevo.")

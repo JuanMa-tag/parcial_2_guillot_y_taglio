@@ -37,7 +37,7 @@ def dar_de_alta_carta(carpeta_raiz):
         
         es_archivo_nuevo = not os.path.isfile(ruta_archivo_csv)
         
-        # Usamos modo 'a' (append) obligatorio
+        # Usamos modo 'a' (append)
         with open(ruta_archivo_csv, mode='a', newline='', encoding='utf-8') as archivo:
             writer = csv.DictWriter(archivo, fieldnames=columnas)
             

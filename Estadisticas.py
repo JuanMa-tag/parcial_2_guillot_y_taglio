@@ -19,7 +19,7 @@ def mostrar_estadisticas(lista_global):
         print(f"Costo Promedio de Elixir: {promedio_elixir:.2f}")
         
     except ZeroDivisionError:
-        # Manejo de excepción si la lista está vacía (aunque ya lo chequeamos)
+        # Manejo de excepción si la lista está vacía
         print("Costo Promedio de Elixir: N/A")
 
     # 3. Recuento por categoría de primer nivel (Rareza)
