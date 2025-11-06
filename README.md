@@ -1,29 +1,97 @@
 # parcial_2_guillot_y_taglio
 parcial 2 de programacion 1pro4 prof hualpa
+Integrantes: Tiago Nahuel Guillot Duran, Juan Manuel Carrillo Taglio
 
-## Clasificación de cartas (CSV)
+Este proyecto es un sistema de gestión de cartas (CRUD) para Clash Royale, desarrollado en Python como parte del Parcial 2 de Programación 1.
 
-He añadido CSVs en el repositorio para clasificar cartas de Clash Royale por subcategoría. Los archivos creados son:
+Su característica principal es que utiliza una estructura de carpetas jerárquica para persistir los datos, en lugar de un único archivo. El programa maneja la creación de estas carpetas y la lectura/escritura de los archivos CSV de forma dinámica.
 
-- `terrestres.csv` — cartas de unidad terrestre.
-- `aereos.csv` — cartas de unidad aérea.
-- `hechizos.csv` — cartas de hechizo.
+ Diseño Técnico (Cómo se guardan los datos)
+El sistema tiene un diseño de 3 niveles de jerarquía que mapea al sistema de archivos.
 
-Cada CSV contiene una columna `nombre` con el nombre de la carta en cada fila. Si quieres que añada más columnas (coste de elixir, rareza, rol), dímelo y lo actualizo.
+1. Jerarquía de Carpetas
+La estructura de carpetas que genera el programa es:
 
-Nota: se asumió que la subcategoría correcta era `aereos` en lugar de `acuaticos`.
+Nivel 1 (Rareza): Comun, Especial, Epica, Legendaria
 
-### Columnas nuevas
+Nivel 2 (Tipo): Tropa, Estructura, Hechizo
 
-He añadido dos columnas a cada CSV: `elixir` (coste en elixir de la carta) y `rareza` (Common, Rare, Epic, Legendary). Puedes editar esos valores si prefieres otra fuente o versión del juego.
+Nivel 3 (Alcance): Terrestre, Aereo, Ambos
 
-### Script de consulta
+Por ejemplo, el "Pekka" se guardaría en la ruta: ClashRoyale/Epica/Tropa/Terrestre/datos.csv
 
-Incluí un pequeño script Python `scripts/list_cards.py` que lee los CSVs y permite filtrar por subcategoría (`terrestres`, `aereos`, `hechizos`), rareza y rango de elixir. Ejemplo de uso:
+2. Estructura del CSV
+Cada archivo datos.csv solo contiene los atributos finales del ítem:
 
-```powershell
-python .\scripts\list_cards.py --subcategoria terrestres --max-elixir 4
-```
+nombre,cantidad de elixir
+Pekka,7
+Principe,5
+3. Lectura Recursiva
+El programa utiliza una función recursiva (cargar_cartas) que explora el directorio raíz ClashRoyale/ y todos sus subdirectorios. Cuando encuentra un archivo datos.csv, lo lee y reconstruye el diccionario completo de la carta (incluyendo su rareza, tipo y alcance que obtiene de la ruta) en una única lista global en memoria.
 
-Eso listará todas las cartas terrestres con coste de elixir menor o igual a 4.
+## Requisitos
+Python 3.x
 
+.No se requieren librerías externas (solo os, csv y sys que vienen con Python).
+.Asegúrate de tener Python 3 instalado en tu sistema.
+
+## Instrucciones de Uso (Cómo ejecutar)
+
+.El archivo (todas_las_cartas.csv) contiene todas las cartas del juego para usarlas de ejemplo ya
+que estas no vienen incluidas en los otros archivos csv.
+
+.Abre un terminal (CMD, PowerShell, o el terminal integrado de VS Code).
+
+.Navega hasta la carpeta donde guardaste el archivo:
+
+Bash
+
+cd ruta/a/tu/carpeta
+Ejecuta el script con Python:
+
+Bash
+
+python gestor_cartas.py
+
+## Guía de Funcionalidades (Menú)
+Al ejecutar el script, el programa te dará la bienvenida y mostrará el menú principal.
+
+Arranque Inicial: La primera vez que lo ejecutes (antes de crear la carpeta ClashRoyale), te mostrará la advertencia: Advertencia: El directorio raíz 'ClashRoyale' no existe. y cargará 0 cartas. Esto es normal.
+
+Opción 1: Alta de Nuevo Ítem (Crear)
+
+Esta es la función principal para añadir datos.
+
+Te pedirá los 3 niveles de jerarquía (Rareza, Tipo, Alcance).
+
+Luego te pedirá los atributos (Nombre, Elixir).
+
+Automáticamente, creará la estructura de carpetas (ej: ClashRoyale/Epica/Tropa/Terrestre/) si no existe, y añadirá la carta al archivo datos.csv correspondiente.
+
+Opción 2: Mostrar Ítems Totales (Leer)
+
+Muestra una tabla en la consola con todas las cartas encontradas por la función recursiva, indicando su jerarquía completa y atributos.
+
+Opción 3 y 4: Modificación y Eliminación (Update/Delete)
+
+Te pedirán el nombre exacto de la carta que deseas modificar o eliminar.
+
+Buscarán la carta en la lista global cargada en memoria.
+
+Una vez modificada o eliminada en memoria, el programa sobrescribirá (modo 'w') únicamente el archivo datos.csv específico donde esa carta estaba guardada, asegurando la persistencia del cambio.
+
+Opción 5 y 6: Ordenamiento y Estadísticas
+
+Estas funciones trabajan sobre la lista global de cartas.
+
+Permiten ordenar la lista por Nombre o Elixir.
+
+Muestran estadísticas clave como el conteo total, el promedio de elixir y un conteo de cartas por Rareza.
+
+Opción 7: Recargar Datos desde Archivos
+
+Vuelve a ejecutar la función recursiva (cargar_cartas) para limpiar la lista en memoria y volver a leer todos los archivos datos.csv.
+
+Opción 8: Salir
+
+Finaliza la ejecución del programa.

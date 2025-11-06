@@ -1,0 +1,17 @@
+Rareza (Nivel 1),Tipo (Nivel 2),Alcance (Nivel 3),Nombre (Atributo),Elixir (Atributo)
+Comun,Tropa,Terrestre,Caballeros,3
+Comun,Tropa,Aereo,Murciélagos,2
+Comun,Estructura,Terrestre,Cañón,3
+Comun,Hechizo,Ambos,Flechas,3
+Especial,Tropa,Terrestre,Montapuercos,4
+Especial,Tropa,Aereo,Bebé Dragón,4
+Especial,Estructura,Terrestre,Torre Tesla,4
+Especial,Hechizo,Ambos,Bola de Fuego,4
+Epica,Tropa,Terrestre,PEKKA.,7
+Epica,Tropa,Aereo,Globo Bombástico,5
+Epica,Hechizo,Ambos,Rayo,6
+Epica,Tropa,Terrestre,Príncipe,5
+Legendaria,Tropa,Terrestre,Mago Eléctrico,4
+Legendaria,Tropa,Aereo,Dragón Infernal,4
+Legendaria,Hechizo,Ambos,El Tronco,2
+Legendaria,Tropa,Ambos,Minero,3

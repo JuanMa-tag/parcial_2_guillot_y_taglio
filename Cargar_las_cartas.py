@@ -23,7 +23,7 @@ def cargar_cartas(ruta_actual, lista_total_cartas):
 
         if os.path.isdir(ruta_completa_elemento):
             # --- PASO RECURSIVO ---
-            cargar_cartas_recursivo(ruta_completa_elemento, lista_total_cartas)
+            cargar_cartas(ruta_completa_elemento, lista_total_cartas)
         
         elif os.path.isfile(ruta_completa_elemento) and elemento == 'datos.csv':
             # --- CASO BASE ---

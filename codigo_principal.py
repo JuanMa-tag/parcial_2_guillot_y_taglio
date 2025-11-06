@@ -64,7 +64,7 @@ def main():
                 print(f"¡Datos recargados! {len(lista_global_de_cartas)} cartas en memoria.")
 
             elif opcion == '8':
-                print("Saliendo del programa. ¡Hasta luego!")
+                print("¡Hasta luego!")
                 break # Rompe el bucle while True
                 
             else:
