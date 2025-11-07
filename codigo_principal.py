@@ -62,7 +62,7 @@ def main():
                 lista_global_de_cartas.clear()
                 cargar_cartas(CARPETA_RAIZ, lista_global_de_cartas)
                 print(f"¡Datos recargados! {len(lista_global_de_cartas)} cartas en memoria.")
-
+                
             elif opcion == '8':
                 print("¡Hasta luego!")
                 break # Rompe el bucle while True
