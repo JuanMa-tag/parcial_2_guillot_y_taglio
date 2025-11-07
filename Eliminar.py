@@ -36,13 +36,12 @@ def eliminar_carta(lista_global, carpeta_raiz):
                 cartas_del_mismo_archivo = [
                     c for c in lista_global
                     if c['rareza'] == carta_encontrada['rareza'] and
-                       c['tipo'] == carta_encontrada['tipo'] and
-                       c['alcance'] == carta_encontrada['alcance']
+                        c['tipo'] == carta_encontrada['tipo'] and
+                        c['alcance'] == carta_encontrada['alcance']
                 ]
                 
                 ruta_directorio = os.path.join(carpeta_raiz, carta_encontrada['rareza'], carta_encontrada['tipo'], carta_encontrada['alcance'])
                 ruta_archivo_csv = os.path.join(ruta_directorio, 'datos.csv')
-
                 if reescribir_archivo_csv(ruta_archivo_csv, cartas_del_mismo_archivo):
                     print("¡ÉXITO! Carta eliminada y archivo actualizado.")
                     return True # Hay que recargar

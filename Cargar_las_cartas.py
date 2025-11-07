@@ -5,7 +5,7 @@ CARPETA_RAIZ = "ClashRoyale"
 def cargar_cartas(ruta_actual, lista_total_cartas):
     """
     (READ)
-    Función recursiva obligatoria. Recorre la jerarquía, lee los
+    Recorre la jerarquía, lee los
     'datos.csv' y consolida todo en 'lista_total_cartas'.
     """
     try:
